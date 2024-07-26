@@ -14,7 +14,10 @@ export const accommodationPreferences = [
 
 const ApplicationForm = () => {
    // Step
-   const [step, setStep] = useState(1);
+   const [step, setStep] = useState(() => {
+    const savedStep = localStorage.getItem('currentStep'); // Read saved step from localStorage
+    return savedStep ? parseInt(savedStep, 10) : 1;
+  });
 
    // Date states
    const [birthOfDate, setBirthOfDate] = useState(null);
@@ -40,6 +43,10 @@ const ApplicationForm = () => {
      medicalConditions: "",
    });
  
+   // Save step in localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('currentStep', step.toString()); // Save step to localStorage
+  }, [step])
  
    // Handle input change
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
