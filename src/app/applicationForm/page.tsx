@@ -148,19 +148,28 @@ const ApplicationForm = () => {
    };
 
   return (
-    <div className='lg:flex md:flex justify-between gap-10 px-10'>
-      <div className='lg:w-[40%]'>
+    <div>
+      <div className=' flex items-center justify-center mx-auto place-content-center mb-4'>
+        <h1 className='rounded-full px-[14px] py-1 text-xl font-bold text-center border-1 bg-blue-500 text-white'>1</h1>
+        <div className="h-2 w-1/5 rounded-lg bg-default-200"></div>
+        <h1 className='rounded-full px-[12px] py-1 text-xl font-bold text-center border-1 bg-blue-500 text-white'>2</h1>
+        <div className="h-2 w-1/5 rounded-lg bg-default-200"></div>
+        <h1 className='rounded-full px-[12px] py-1 text-xl font-bold text-center border-1 bg-blue-500 text-white'>3</h1>
+      </div>
+
+      <div className='lg:flex md:flex justify-between gap-10 px-10'>
+      <div className='lg:w-[40%] mt-1'>
         <Image
           width={400}
-          className='h-[470px]'
+          className='max-h-[486px]'
           alt="NextUI hero Image"
           src="https://i.ibb.co/h9vmXNp/form-image.jpg"
         />
       </div>
-      <div className='lg:w-[60%] border p-10 shadow-2xl rounded-md'>
+      <div className='lg:w-[60%] border px-10 py-7 shadow-2xl rounded-md lg:mt-1 md:mt-1 mt-8'>
         {step === 1 && (
           <form>
-            <h2 className='text-2xl font-semibold mt-5'>Personal Information</h2>
+            <h2 className='text-2xl font-semibold'>Personal Information</h2>
             <div className="mb-3 mt-5">
               <Input type="text" label="Name" name="name" className='text-slate-950' placeholder="Write your Name" value={formData.name} onChange={handleInputChange} required />
               {errors.name && <span className='text-red-600 text-xs'>{errors.name}</span>}
@@ -199,7 +208,7 @@ const ApplicationForm = () => {
 
         {step === 2 && (
           <form>
-            <h2 className='text-2xl font-semibold mt-5'>Travel Preferences</h2>
+            <h2 className='text-2xl font-semibold'>Travel Preferences</h2>
             <div className="mb-3 mt-5">
               <DatePicker
                 label="Departure Date"
@@ -253,7 +262,7 @@ const ApplicationForm = () => {
 
         {step === 3 && (
           <form>
-            <h2 className='text-2xl font-semibold mt-5'>Health and Safety</h2>
+            <h2 className='text-2xl font-semibold'>Health and Safety</h2>
             <div className="mb-3 mt-5 border p-3 rounded-2xl bg-slate-100">
               <Checkbox name="isHealthDeclaration" isSelected={formData.isHealthDeclaration} onChange={handleInputChange}>Health Declaration</Checkbox>
               {/* {errors.isHealthDeclaration && <span className='text-red-600 text-xs'>{errors.isHealthDeclaration}</span>} */}
@@ -273,6 +282,8 @@ const ApplicationForm = () => {
           </form>
         )}
       </div>
+    </div>
+
     </div>
   );
 };
