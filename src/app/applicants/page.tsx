@@ -9,10 +9,11 @@ import {
   TableCell,
   Button,
 } from "@nextui-org/react";
-import { Star, Trash2 } from "lucide-react";
+import { FilePenLine, Star, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
 import moment from "moment";
 import { TFormData, TUser, TUserId } from "@/types";
+import Link from "next/link";
 
 const Applicants = () => {
   const [users, setUsers] = useState([]);
@@ -55,11 +56,9 @@ const handleDelete = async (id: string) => {
           const response = await fetch(`http://localhost:5000/api/user/${id}`, {
             method: 'DELETE'
           });
-  
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-  
           const resultData = await response.json();
           console.log(resultData);
   
@@ -113,9 +112,11 @@ const handleDelete = async (id: string) => {
                             <Trash2/>
                         </Button>
                           <hr className="border-2 mx-2 h-7 bg-slate-800"></hr>                    
-                          <Button onClick={() => handleDelete(user?._id)} className=" hover:bg-slate-700 px-2 py-2 rounded-md">
-                            <Trash2/>
+                          <Link href={`applicants/${user?._id}`}>
+                          <Button className=" hover:bg-slate-700 px-2 py-2 rounded-md">
+                            <FilePenLine/>
                            </Button>
+                          </Link>
                     </TableCell>
                 </TableRow>
               ))

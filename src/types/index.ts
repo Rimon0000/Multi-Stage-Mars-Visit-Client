@@ -34,3 +34,11 @@ export type TFormData = {
   export type TUserId = {
     _id: string;
   }
+
+
+export  type TPropsUserId = {
+    UserId: any;
+    params: {
+      UserId: string;
+    }
+  }

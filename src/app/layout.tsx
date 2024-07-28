@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Sidebar from "@/components/shared/Sidebar";
 import Topbar from "@/components/shared/Topbar";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
                 <Sidebar></Sidebar>
                 <div className="col-span-10 h-full p-5">
                 {children}
+                <Toaster />
                 </div>
             </div>
         </div>
