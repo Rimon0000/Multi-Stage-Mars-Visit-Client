@@ -13,3 +13,24 @@ export type TFormData = {
     emergencyContact: string;
     medicalConditions: string;
   };
+
+  export type TUser = {
+    data: any;
+    _id: string;
+    name: string;
+    birthOfDate: string;
+    nationality: string;
+    email: string;
+    phone: string;
+    departureDate: string;
+    returnDate: string;
+    accommodation: string;
+    specialRequests: string;
+    isHealthDeclaration: boolean;
+    emergencyContact: string;
+    medicalConditions: string;
+  }
+
+  export type TUserId = {
+    _id: string;
+  }
