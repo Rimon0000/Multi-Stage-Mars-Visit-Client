@@ -17,10 +17,15 @@ export const accommodationPreferences = [
 
 const ApplicationForm = () => {
    // Step
-   const [step, setStep] = useState(() => {
+   const [step, setStep] = useState(1);
+
+  // Fetch saved step from localStorage on the client side
+  useEffect(() => {
     const savedStep = localStorage.getItem('currentStep');
-    return savedStep ? parseInt(savedStep, 10) : 1;
-  });
+    if (savedStep) {
+      setStep(parseInt(savedStep, 10));
+    }
+  }, []);
 
    // Initial form data state
    const initialFormData: TFormData = {
@@ -124,7 +129,7 @@ const ApplicationForm = () => {
           const savedFormData = JSON.parse(localStorage.getItem(`formDataStage${i}`) || '{}');
           allFormData = { ...allFormData, ...savedFormData };
         }
-        await axios.post('http://localhost:5000/api/user', allFormData);
+        await axios.post('https://multi-stage-mars-visit-server.vercel.app/api/user', allFormData);
 
         // Clear localStorage data, step and reset form data
         for (let i = 1; i <= 3; i++) {
